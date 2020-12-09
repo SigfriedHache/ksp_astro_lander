@@ -21,12 +21,13 @@ import os
 import json
 
 # Config location
-CONFIG = r'C:\scratch\git\krpc_scratchpad_py\astrobotic_lander\config.json'
+DIR = str(os.path.abspath('.') + '\\')
 
 ###############################################################################
 # Marshall the configuration from config.json
-with open(CONFIG, "r") as config_file:
+with open(str(DIR + '\\config.json'), "r") as config_file:
     config = json.load(config_file)
+config["log_dir"] = str(DIR + "\\" + config["log_dir"] + "\\")
 
 # Clear and ensure the existence of the logdir (more elegant ways on linux...)
 try:
