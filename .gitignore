@@ -1,3 +1,5 @@
 logs/*
 logs/system.log
 logs/telemetry.log
+
+*.pyc
