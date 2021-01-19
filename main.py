@@ -4,10 +4,6 @@ Project Author(s): Sigfried Hache
 Description: 
     This script runs the Astrobotic Lander mission, including all 
     relevant phases from pre-check through landing itself.
-Updates:
-    12/06/2020 - Sigfried Hache
-        > Created high-level runner for mission
-        > Created initial sequence for the main mission phases
 """
 
 # Custom Library and Special Library Imports
@@ -20,7 +16,7 @@ import shutil
 import os
 import json
 
-# Config location
+# Current run location
 DIR = str(os.path.abspath('.') + '\\')
 
 ###############################################################################
@@ -71,8 +67,9 @@ try:
 except Exception as e:
     system_logger.error("There was a problem setting up the KRPC Connection:")
     system_logger.error(e)
-    # raise Exception(e)
-    krpc_connection = "Whoops!"
+    system_logger.error("Terminating program with error condition.")
+    #!!!!! Early exit condition
+    exit()
 
 ###############################################################################
 # Initialize vehicle object
@@ -90,16 +87,16 @@ system_logger.info("Phase 1: Pre-launch Checks is commencing.")
 AstroPhases.Phase1(astrobotic_lander)
 
 # Run Phase 2: Launch to circular low Kerbin orbit
-system_logger.info("Phase 2: Low Kerbin Orbit Navigation is commencing.")
+system_logger.info("Phase 2: Ascent to Low Kerbin Orbit is commencing.")
 AstroPhases.Phase2(astrobotic_lander)
 
 # Run Phase 3: Navigate and guide from low Kerbin orbit to a low, circular, 
 # highly-inclined Munar orbit
-system_logger.info("Phase 3: Polar Low Munar Orbit Navigation is commencing.")
+system_logger.info("Phase 3: Navigation to Low Polar Munar Orbit is commencing.")
 AstroPhases.Phase3(astrobotic_lander)
 
 # Run Phase 4: Land on the morning horizon of the Mun
-system_logger.info("Phase 4: Munar Landing is commencing.")
+system_logger.info("Phase 4: Descent and Munar Landing is commencing.")
 AstroPhases.Phase4(astrobotic_lander)
 
 # End!
