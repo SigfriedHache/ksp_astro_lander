@@ -1,0 +1,19 @@
+vessel:
+  name: "Astrobotic Lander"
+  filepath: "C:/Program Files (x86)/Steam/SteamApps/common/Kerbal Space Program/saves/Astrobotic/Ships/VAB/PeregrineLander.craft"
+krpc_stream:
+  name: "Astrobotic Mun Mission"
+  address: 127.0.0.1
+  rpc_port: 50000
+  stream_port: 50001
+logging:
+  level: "INFO"
+  dir: "C:/scratch/git/krpc_scratchpad_py/ksp_astro_lander/logs"
+  telemetry:
+    name: "Telemetry Logs"
+    filename: "telemetry.log"
+    formatter: "%(asctime)s %(message)s"
+  system:
+    name: "Systems Logs"
+    filename: "system.log"
+    formatter: "%(asctime)s %(levelname)-5s - %(message)s"
